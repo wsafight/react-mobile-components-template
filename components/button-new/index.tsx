@@ -2,9 +2,9 @@ import React, { createElement } from 'react';
 import { createNamespace } from '../utils';
 import { BORDER_SURROUND } from '../utils/constant';
 import PropsType from './PropsType';
+import './style/index.scss';
 
 const [bem] = createNamespace('button');
-console.log('bem', bem);
 
 export default function Button(props: PropsType) {
   const {
@@ -100,6 +100,7 @@ export default function Button(props: PropsType) {
       // route();
     }
   };
+
   const classes = [
     bem([
       type,
@@ -114,10 +115,11 @@ export default function Button(props: PropsType) {
         hairline,
       },
     ]),
-    { [BORDER_SURROUND]: hairline },
   ];
+  if (hairline) {
+    classes.concat([BORDER_SURROUND]);
+  }
 
-  console.log('xxxx', classes);
   return createElement(tag as string, {
     type: nativeType,
     className: classes,
