@@ -22,8 +22,6 @@
     "build:lib": "rimraf lib && tsc --outDir lib -d --emitDeclarationOnly && zarm build --mode lib --path components --out-dir lib --copy-files --build-css",
     "build:umd": "rimraf dist && zarm build --mode umd --path components/style/entry.tsx,components/index.tsx --out-dir dist && zarm build --mode umd-ugly --path components/style/entry.tsx,components/index.tsx --out-dir dist",
     "build": "npm run build:lib && npm run build:es && npm run build:umd",
-    "deploy:build": "rimraf assets && mkdir assets && touch assets/CNAME && echo 'zarm.design' > assets/CNAME && zarm deploy",
-    "deploy": "npm run deploy:build -- -p && gh-pages -d assets",
     "lint:ts": "eslint --ext .ts,.tsx components",
     "lint:js": "eslint --ext .js,.jsx components site rnkit/pages",
     "lint:style": "stylelint \"components/**/*.scss\" \"site/**/*.scss\" --syntax scss",

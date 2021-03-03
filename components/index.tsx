@@ -3,7 +3,7 @@ export { default as ActionSheet } from './action-sheet';
 // export { default as Alert } from './alert';
 export { default as BackToTop } from './back-to-top';
 export { default as Badge } from './badge';
-export { default as Button } from './button';
+export { default as Button } from './button-new';
 export { default as Calendar } from './calendar';
 export { default as Cell } from './cell';
 export { default as Checkbox } from './checkbox';
