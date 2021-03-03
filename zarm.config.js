@@ -27,6 +27,13 @@ module.exports = {
   },
   banner: `
     ${name} v${version}
+
+    Github: https://github.com/ZhongAnTech/${name}
+
+    Copyright (c) 2013-present, ZhonganTech, Inc.
+
+    This source code is licensed under the MIT license found in the
+    LICENSE file in the root directory of this source tree.
   `,
   setBabelOptions: (options) => {
     options.plugins.push(['import', { libraryName: 'zarm-web', style: true }, 'zarm-web']);
