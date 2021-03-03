@@ -3,7 +3,6 @@ import { Route, Switch, Redirect, useParams } from 'react-router-dom';
 import classnames from 'classnames';
 import Loadable from 'react-loadable';
 import { FormattedMessage } from 'react-intl';
-import { Icon } from 'zarm';
 import { documents, components } from '@site/site.config';
 import Context from '@site/utils/context';
 import Container from '@site/web/components/Container';
@@ -23,8 +22,6 @@ const LoadableComponent = (component) => {
     loading: () => null,
   });
 };
-
-const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv.js');
 
 const Simulator = () => {
   const params = useParams();
@@ -53,7 +50,7 @@ const Simulator = () => {
             }}
             title={txt}
           >
-            <Icons type="affix" size="sm" />
+            icons
           </div>
         )}
       </FormattedMessage>

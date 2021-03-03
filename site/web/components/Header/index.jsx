@@ -17,7 +17,7 @@ import '@/components/style/entry';
 const initDocSearch = () => {
   docsearch({
     apiKey: '44e980b50447a3a5fac9dc2a4808c439',
-    indexName: 'zarm',
+    indexName: 'React Vant',
     inputSelector: '.search input',
     debug: false,
   });
@@ -51,12 +51,6 @@ const Header = ({ children }) => {
       link: '#/components/quick-start',
       title: <FormattedMessage id="app.home.nav.components" />,
     },
-    {
-      key: 'design',
-      link: '#/design/download',
-      title: <FormattedMessage id="app.home.nav.resources" />,
-    },
-    { key: 'gitee', link: 'https://zarm.gitee.io', title: '国内镜像' },
   ];
 
   if (document.location.host.indexOf('gitee') > -1 || locale === 'enUS') {
@@ -102,15 +96,6 @@ const Header = ({ children }) => {
                   <a href={item.link}>{item.title}</a>
                 </Menu.Item>
               ))}
-              <Menu.Item>
-                <a
-                  href="https://github.com/ZhongAnTech/zarm"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Github
-                </a>
-              </Menu.Item>
             </Menu>
           </div>
         }
@@ -128,8 +113,7 @@ const Header = ({ children }) => {
             {menuRender}
             <div className="logo">
               <a href="#/">
-                <img alt="logo" src={require('./images/logo.svg')} />
-                Zarm
+                React-Vant
                 <sup className="logo-version">v{version}</sup>
               </a>
             </div>
@@ -164,14 +148,6 @@ const Header = ({ children }) => {
                   <Radio value="enUS">EN</Radio>
                 </Radio.Group>
               </div>
-              <a
-                className="github"
-                href="https://github.com/ZhongAnTech/zarm"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icons type="github" />
-              </a>
             </nav>
           </div>
         </header>

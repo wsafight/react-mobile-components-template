@@ -31,13 +31,9 @@ const Page = () => {
         {(txt) => <Meta title={`Zarm Design - ${txt}`} />}
       </FormattedMessage>
       <main>
-        <div className="banner">
-          <img src={require('./images/banner@2x.png')} alt="" />
-        </div>
         <div className="introduce">
           <div className="title">
-            <span>Zarm</span>
-            &nbsp;Design
+            <span>React-Vant</span>
           </div>
           <div className="description">
             <FormattedMessage id="app.home.index.introduce" />
