@@ -1,14 +1,4 @@
-import {
-  ref,
-  watch,
-  provide,
-  computed,
-  nextTick,
-  reactive,
-  PropType,
-  onMounted,
-  HTMLAttributes,
-} from 'vue';
+import React from 'react';
 
 // Utils
 import {
@@ -18,7 +8,6 @@ import {
   isObject,
   isPromise,
   isFunction,
-  UnknownProp,
   resetScroll,
   formatNumber,
   preventDefault,
@@ -47,7 +36,7 @@ import type {
   FieldValidateTrigger,
 } from './types';
 
-const [createComponent, bem] = createNamespace('field');
+const [bem] = createNamespace('field');
 
 export default createComponent({
   props: {
