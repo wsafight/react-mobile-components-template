@@ -2,7 +2,6 @@ export { default as Collapse } from './collapse';
 export { default as ActionSheet } from './action-sheet';
 export { default as BackToTop } from './back-to-top';
 export { default as Button } from './button-new';
-export { default as Calendar } from './calendar';
 export { default as Cell } from './cell';
 export { default as Checkbox } from './checkbox';
 // export { default as Confirm } from './confirm';
