@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import { canUseDOM, getMountContainer } from '../utils/dom';
-import Mask from '../mask';
 import PropsType from './PropsType';
 import Trigger from '../trigger';
 
@@ -33,7 +32,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
     direction: 'bottom',
     animationType: 'fade',
     animationDuration: 200,
-    maskType: Mask.defaultProps.type,
   };
 
   constructor(props) {
@@ -103,18 +101,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
   };
 
   renderMask = () => {
-    const { mask, maskType, animationDuration, visible } = this.props;
-    const { isPending } = this.state;
-    const animationState = visible ? 'enter' : 'leave';
-    const maskCls = classnames({
-      [`za-fade-${animationState}`]: isPending,
-    });
-
-    const maskStyle: CSSProperties = {
-      WebkitAnimationDuration: `${animationDuration}ms`,
-      animationDuration: `${animationDuration}ms`,
-    };
-    return mask && <Mask className={maskCls} style={maskStyle} visible type={maskType} />;
+    return null;
   };
 
   onEsc = () => {

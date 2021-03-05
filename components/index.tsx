@@ -11,8 +11,6 @@ export { default as DateSelect } from './date-select';
 export { default as FilePicker } from './file-picker';
 export { default as Icon } from './icon';
 export { default as Input } from './input';
-export { default as Loading } from './loading';
-export { default as Mask } from './mask';
 export { default as Message } from './message';
 export { default as Modal } from './modal';
 export { default as NoticeBar } from './notice-bar';
