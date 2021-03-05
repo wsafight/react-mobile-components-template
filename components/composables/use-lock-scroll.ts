@@ -1,20 +1,19 @@
-import { Ref, watch, onBeforeUnmount, onDeactivated } from 'vue';
-import { getScrollParent, supportsPassive, onMountedOrActivated } from '@vant/use';
-import { useTouch } from './internal/use-touch';
+import { getScrollParent, supportsPassive, useTouch } from './internal';
 import { preventDefault } from '../utils';
+import { useEffect } from 'react';
 
 let totalLockCount = 0;
 
 const BODY_LOCK_CLASS = 'van-overflow-hidden';
 
-export function useLockScroll(rootRef: Ref<HTMLElement | undefined>, shouldLock: () => boolean) {
+export function useLockScroll(rootRef: HTMLElement | undefined, shouldLock: () => boolean) {
   const touch = useTouch();
 
   const onTouchMove = (event: TouchEvent) => {
     touch.move(event);
 
-    const direction = touch.deltaY.value > 0 ? '10' : '01';
-    const el = getScrollParent(event.target as Element, rootRef.value) as HTMLElement;
+    const direction = touch.deltaY > 0 ? '10' : '01';
+    const el = getScrollParent(event.target as Element, rootRef) as HTMLElement;
     const { scrollHeight, offsetHeight, scrollTop } = el;
     let status = '11';
 
@@ -69,11 +68,12 @@ export function useLockScroll(rootRef: Ref<HTMLElement | undefined>, shouldLock:
     }
   };
 
-  onMountedOrActivated(init);
-  onDeactivated(destroy);
-  onBeforeUnmount(destroy);
-
-  watch(shouldLock, (value) => {
-    value ? lock() : unlock();
+  useEffect(() => {
+    init();
+    return () => destroy();
   });
+
+  useEffect(() => {
+    shouldLock() ? lock() : unlock();
+  }, [shouldLock()]);
 }
