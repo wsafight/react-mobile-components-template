@@ -1,17 +1,13 @@
-import { ref, watch, WatchSource } from 'vue';
+import { useEffect, useState } from 'react';
 
-export function useLazyRender(show: WatchSource<boolean | undefined>) {
-  const inited = ref(false);
+export function useLazyRender(show: boolean | undefined) {
+  const [inited, setInited] = useState<boolean>(false);
 
-  watch(
-    show,
-    (value) => {
-      if (value) {
-        inited.value = value;
-      }
-    },
-    { immediate: true },
-  );
+  useEffect(() => {
+    if (show) {
+      setInited(show);
+    }
+  }, [show]);
 
-  return (render: () => JSX.Element) => () => (inited.value ? render() : null);
+  return (render: () => JSX.Element) => () => (inited ? render() : null);
 }
