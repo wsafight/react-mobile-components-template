@@ -6,7 +6,6 @@ import DateSelect from '../../date-select/locale/en_US';
 import Picker from '../../picker/locale/en_US';
 import StackPicker from '../../stack-picker/locale/en_US';
 import Pull from '../../pull/locale/en_US';
-import SearchBar from '../../search-bar/locale/en_US';
 import Select from '../../select/locale/en_US';
 import ImagePreview from '../../image-preview/locale/en_US';
 
@@ -20,7 +19,6 @@ export default {
   Picker,
   StackPicker,
   Pull,
-  SearchBar,
   Select,
   ImagePreview,
 };

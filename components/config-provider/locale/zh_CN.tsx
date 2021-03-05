@@ -6,7 +6,6 @@ import DateSelect from '../../date-select/locale/zh_CN';
 import Picker from '../../picker/locale/zh_CN';
 import StackPicker from '../../stack-picker/locale/zh_CN';
 import Pull from '../../pull/locale/zh_CN';
-import SearchBar from '../../search-bar/locale/zh_CN';
 import Select from '../../select/locale/zh_CN';
 import ImagePreview from '../../image-preview/locale/zh_CN';
 
@@ -20,7 +19,6 @@ export default {
   Picker,
   StackPicker,
   Pull,
-  SearchBar,
   Select,
   ImagePreview,
 };
