@@ -4,6 +4,21 @@ const MIN_DISTANCE = 10;
 
 type Direction = '' | 'vertical' | 'horizontal';
 
+export interface UseTouchResult {
+  move: any;
+  start: any;
+  reset: any;
+  startX: number;
+  startY: number;
+  deltaX: number;
+  deltaY: number;
+  offsetX: number;
+  offsetY: number;
+  direction: string;
+  isVertical: () => boolean;
+  isHorizontal: () => boolean;
+}
+
 function getDirection(x: number, y: number) {
   if (x > y && x > MIN_DISTANCE) {
     return 'horizontal';
@@ -14,7 +29,7 @@ function getDirection(x: number, y: number) {
   return '';
 }
 
-export function useTouch() {
+export function useTouch(): UseTouchResult {
   const startX = useRef(0);
   const startY = useRef(0);
   const deltaX = useRef(0);
@@ -56,13 +71,13 @@ export function useTouch() {
     move,
     start,
     reset,
-    startX,
-    startY,
-    deltaX,
-    deltaY,
-    offsetX,
-    offsetY,
-    direction,
+    startX: startX.current,
+    startY: startY.current,
+    deltaX: deltaX.current,
+    deltaY: deltaY.current,
+    offsetX: offsetX.current,
+    offsetY: offsetY.current,
+    direction: direction.current,
     isVertical,
     isHorizontal,
   };
