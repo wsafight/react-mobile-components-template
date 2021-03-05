@@ -3,7 +3,6 @@ import ReactDOM, { createPortal } from 'react-dom';
 import PopperJS from 'popper.js';
 import classnames from 'classnames';
 
-import ClickOutside from '../click-outside';
 import { canUseDOM, getOuterSizes } from '../utils/dom';
 import BasePopperProps, { PopperPlacement, directionMap } from './PropsType';
 import Events from '../utils/events';
@@ -401,12 +400,7 @@ class Popper extends React.Component<PopperProps, PopperStates> {
     }
 
     const toolTip = (
-      <ClickOutside
-        onClickOutside={this.handleClose}
-        ignoredNode={this.reference}
-        className={`${prefixCls}-container`}
-        disabled={trigger === 'manual'}
-      >
+      <div>
         <div
           role="tooltip"
           style={{
@@ -431,7 +425,7 @@ class Popper extends React.Component<PopperProps, PopperStates> {
             />
           )}
         </div>
-      </ClickOutside>
+      </div>
     );
 
     return (
