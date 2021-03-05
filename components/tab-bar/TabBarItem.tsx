@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import Badge from '../badge';
 import type { BaseTabBarItemProps } from './PropsType';
 
 export interface TabBarItemProps extends BaseTabBarItemProps {
@@ -50,7 +49,7 @@ class TabBarItem extends PureComponent<TabBarItemProps, {}> {
           this.change(itemKey);
         }}
       >
-        {badge ? <Badge {...badge}>{contentRender}</Badge> : contentRender}
+        {badge ? <div></div> : contentRender}
       </div>
     );
   }
