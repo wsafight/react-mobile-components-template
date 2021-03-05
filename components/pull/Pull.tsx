@@ -5,7 +5,6 @@ import Events from '../utils/events';
 import Throttle from '../utils/throttle';
 import { getScrollTop } from '../utils/dom';
 import Drag from '../drag';
-import ActivityIndicator from '../activity-indicator';
 import Icon from '../icon';
 
 export interface PullProps extends PropsType {
@@ -321,7 +320,6 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.pull:
         return (
           <div className={cls}>
-            <ActivityIndicator loading={false} percent={percent} />
             <span>{locale!.pullText}</span>
           </div>
         );
@@ -329,7 +327,6 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.drop:
         return (
           <div className={cls}>
-            <ActivityIndicator loading={false} percent={100} />
             <span>{locale!.dropText}</span>
           </div>
         );
@@ -337,7 +334,6 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.loading:
         return (
           <div className={cls}>
-            <ActivityIndicator type="spinner" />
             <span>{locale!.loadingText}</span>
           </div>
         );
@@ -381,7 +377,6 @@ export default class Pull extends PureComponent<PullProps, any> {
       case LOAD_STATE.loading:
         return (
           <div className={cls}>
-            <ActivityIndicator type="spinner" />
             <span>{locale!.loadingText}</span>
           </div>
         );

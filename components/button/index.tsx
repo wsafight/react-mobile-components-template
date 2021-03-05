@@ -6,7 +6,6 @@ import React, {
 } from 'react';
 import classnames from 'classnames';
 import BasePropsType from './PropsType';
-import ActivityIndicator from '../activity-indicator';
 
 interface BaseButtonPropsType extends BasePropsType {
   prefixCls?: string;
@@ -79,7 +78,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       [`${prefixCls}--disabled`]: !!disabled,
     });
 
-    const iconRender = loading ? <ActivityIndicator /> : icon;
+    const iconRender = icon;
 
     const childrenRender = children && <span>{children}</span>;
 

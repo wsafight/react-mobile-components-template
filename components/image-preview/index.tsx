@@ -3,7 +3,6 @@ import PropsType, { ImageSrc } from './PropsType';
 import Popup from '../popup';
 import Carousel from '../carousel';
 import PinchZoom from '../pinch-zoom';
-import ActivityIndicator from '../activity-indicator';
 import { isObject, isString } from '../utils/validate';
 import ConfigReceiver from '../config-receiver';
 import { Locale } from '../config-provider/PropsType';
@@ -233,11 +232,7 @@ class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
         <div className={`${prefixCls}__footer`}>
           {loaded && this.showOriginButton(images, activeIndex) && loaded !== LOAD_STATUS.after ? (
             <button className={`${prefixCls}__origin__button`} onClick={this.loadOrigin}>
-              {loaded === LOAD_STATUS.start ? (
-                <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" />
-              ) : (
-                ''
-              )}
+              {loaded === LOAD_STATUS.start ? <div className={`${prefixCls}__loading`} /> : ''}
               {locale![loaded]}
             </button>
           ) : (
