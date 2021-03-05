@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from './Modal';
-import Alert from '../alert/Alert';
 import Confirm from '../confirm/Confirm';
 import { getRunTimeLocale } from '../config-provider/ConfigProvider';
 import { getMountContainer } from '../utils/dom';
@@ -73,22 +72,6 @@ function modalType(props, type) {
   function render(visible) {
     const runTimeLocale = getRunTimeLocale();
     if (type === 'alert') {
-      let _props: any = props;
-      if (runTimeLocale && runTimeLocale.Alert) {
-        _props = { ...props, className: '', locale: runTimeLocale.Alert };
-      }
-      ReactDOM.render(
-        <Alert
-          {..._props}
-          mountContainer={false}
-          onCancel={() => {
-            _onCancel(render);
-          }}
-          afterClose={_afterClose}
-          visible={visible}
-        />,
-        container,
-      );
     } else {
       let _props: any = props;
       if (runTimeLocale && runTimeLocale.Confirm) {

@@ -1,5 +1,4 @@
 import ActionSheet from '../../action-sheet/locale/en_US';
-import Alert from '../../alert/locale/en_US';
 import Confirm from '../../confirm/locale/en_US';
 import DatePicker from '../../date-picker/locale/en_US';
 import DatePickerView from '../../date-picker-view/locale/en_US';
@@ -15,7 +14,6 @@ import ImagePreview from '../../image-preview/locale/en_US';
 export default {
   locale: 'en-US',
   ActionSheet,
-  Alert,
   Confirm,
   DatePicker,
   DatePickerView,
