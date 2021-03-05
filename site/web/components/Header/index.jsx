@@ -134,20 +134,6 @@ const Header = ({ children }) => {
                   </li>
                 ))}
               </ul>
-              <div className="lang">
-                <Radio.Group
-                  compact
-                  type="button"
-                  value={locale}
-                  onChange={(value) => {
-                    setLocale(value);
-                    window.localStorage.locale = value;
-                  }}
-                >
-                  <Radio value="zhCN">中文</Radio>
-                  <Radio value="enUS">EN</Radio>
-                </Radio.Group>
-              </div>
             </nav>
           </div>
         </header>

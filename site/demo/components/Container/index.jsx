@@ -61,18 +61,18 @@ const Container = (props) => {
                   })}
                 </ul>
                 <div className="themes">
-                  <Radio.Group
-                    compact
-                    type="button"
-                    value={theme}
-                    onChange={(value) => {
-                      setTheme(value);
-                      window.localStorage.theme = value;
-                    }}
-                  >
-                    <Radio value="light">默认主题</Radio>
-                    <Radio value="dark">暗黑主题</Radio>
-                  </Radio.Group>
+                  {/*<Radio.Group*/}
+                  {/*  compact*/}
+                  {/*  type="button"*/}
+                  {/*  value={theme}*/}
+                  {/*  onChange={(value) => {*/}
+                  {/*    setTheme(value);*/}
+                  {/*    window.localStorage.theme = value;*/}
+                  {/*  }}*/}
+                  {/*>*/}
+                  {/*  <Radio value="light">默认主题</Radio>*/}
+                  {/*  <Radio value="dark">暗黑主题</Radio>*/}
+                  {/*</Radio.Group>*/}
                 </div>
               </div>
             }
