@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import isEqual from 'lodash/isEqual';
 import BaseDatePickerProps from './PropsType';
 import Popup from '../popup';
-import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 import DatePickerView from '../date-picker-view';
 import { parseState } from '../date-picker-view/utils/parseState';
 
@@ -21,21 +19,6 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     onCancel: () => {},
     onInit: () => {},
   };
-
-  static getDerivedStateFromProps(props, state) {
-    if (
-      !isEqual(
-        removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']),
-        removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']),
-      )
-    ) {
-      return {
-        prevProps: props,
-        ...parseState(props),
-      };
-    }
-    return null;
-  }
 
   constructor(props) {
     super(props);

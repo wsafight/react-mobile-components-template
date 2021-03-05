@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import isEqual from 'lodash/isEqual';
 import BaseDatePickerViewProps from './PropsType';
-import PickerView from '../picker-view';
-import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 import { isExtendDate, parseState } from './utils/parseState';
 import { cloneDate, getDaysInMonth, getGregorianCalendar, pad, setMonth } from './utils/date';
 
@@ -29,22 +26,6 @@ export default class DatePickerView extends Component<DatePickerViewProps, DateP
     valueMember: 'value',
     stopScroll: false,
   };
-
-  static getDerivedStateFromProps(props, state) {
-    if (
-      !isEqual(
-        removeFnFromProps(props, ['onChange', 'onInit', 'onTransition']),
-        removeFnFromProps(state.prevProps, ['onChange', 'onInit', 'onTransition']),
-      )
-    ) {
-      return {
-        prevProps: props,
-        ...parseState(props),
-      };
-    }
-
-    return null;
-  }
 
   constructor(props: DatePickerViewProps) {
     super(props);
@@ -390,17 +371,6 @@ export default class DatePickerView extends Component<DatePickerViewProps, DateP
   };
 
   render() {
-    const { prefixCls, className, onInit, defaultValue, wheelDefaultValue, ...others } = this.props;
-    const { dataSource, value } = this.getColsValue();
-    return (
-      <PickerView
-        {...others}
-        className={className}
-        prefixCls={prefixCls}
-        dataSource={dataSource}
-        value={value}
-        onChange={this.onValueChange}
-      />
-    );
+    return <></>;
   }
 }
