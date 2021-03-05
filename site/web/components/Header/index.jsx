@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { IntlProvider, FormattedMessage } from 'react-intl';
-import { Icon, Popup, Radio } from 'zarm';
+import { Icon, Popup } from 'zarm';
 import { Dropdown, Menu } from 'zarm-web';
 import classnames from 'classnames';
 import docsearch from 'docsearch.js';
