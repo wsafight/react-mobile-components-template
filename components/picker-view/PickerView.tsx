@@ -2,23 +2,16 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import isEqual from 'lodash/isEqual';
 import BasePickerViewProps from './PropsType';
-import Wheel from '../wheel';
 import { isCascader } from '../utils/validate';
 import parseProps from './utils/parseProps';
 import removeFnFromProps from './utils/removeFnFromProps';
-import { WheelValue, WheelItem } from '../wheel/PropsType';
 
 export interface PickerViewProps extends BasePickerViewProps {
   prefixCls?: string;
   className?: string;
 }
 
-export interface PickerViewState {
-  value: Array<WheelValue>;
-  dataSource: WheelItem[][];
-}
-
-export default class PickerView extends Component<PickerViewProps, PickerViewState> {
+export default class PickerView extends Component<PickerViewProps, any> {
   static defaultProps = {
     prefixCls: 'za-picker-view',
     dataSource: [],
@@ -28,7 +21,7 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
     disabled: false,
   };
 
-  state: PickerViewState = parseProps.getSource(this.props);
+  state: any = parseProps.getSource(this.props);
 
   // TODO: is this method still be used?
   static getDerivedStateFromProps(props, state) {
@@ -47,7 +40,7 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
     return null;
   }
 
-  onValueChange = (selected: WheelValue, level: number) => {
+  onValueChange = (selected: any, level: number) => {
     const value = this.state.value.slice();
     const { dataSource, onChange, valueMember, cols } = this.props;
 
@@ -63,21 +56,9 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
   };
 
   renderWheel = () => {
-    const { valueMember, itemRender, disabled, stopScroll } = this.props;
-    const { dataSource, value } = this.state;
+    const { dataSource } = this.state;
 
-    return dataSource.map((item, index) => (
-      <Wheel
-        key={+index}
-        dataSource={item}
-        value={value[index]}
-        valueMember={valueMember}
-        itemRender={itemRender}
-        disabled={disabled}
-        onChange={(selected: WheelValue) => this.onValueChange(selected, index)}
-        stopScroll={stopScroll}
-      />
-    ));
+    return dataSource.map((_item, index) => <div key={+index} />);
   };
 
   render() {
