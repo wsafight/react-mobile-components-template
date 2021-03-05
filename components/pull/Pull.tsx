@@ -1,10 +1,8 @@
-import React, { PureComponent, CSSProperties, ReactNode } from 'react';
-import classnames from 'classnames';
+import React, { PureComponent, ReactNode } from 'react';
 import { REFRESH_STATE, LOAD_STATE, PullAction, PropsType } from './PropsType';
 import Events from '../utils/events';
 import Throttle from '../utils/throttle';
 import { getScrollTop } from '../utils/dom';
-import Drag from '../drag';
 import Icon from '../icon';
 
 export interface PullProps extends PropsType {
@@ -401,40 +399,6 @@ export default class Pull extends PureComponent<PullProps, any> {
   };
 
   render() {
-    const { prefixCls, className, style, children } = this.props;
-    const { offsetY, animationDuration, refreshState, loadState } = this.state;
-    const cls = classnames(prefixCls, className);
-
-    const loadCls = classnames(`${prefixCls}__load`, {
-      [`${prefixCls}__load--show`]: loadState >= LOAD_STATE.loading,
-    });
-
-    const contentStyle: CSSProperties = {
-      WebkitTransition: `all ${animationDuration}ms`,
-      transition: `all ${animationDuration}ms`,
-    };
-
-    if (refreshState <= REFRESH_STATE.drop) {
-      contentStyle.WebkitTransform = `translate3d(0, ${offsetY}px, 0)`;
-      contentStyle.transform = `translate3d(0, ${offsetY}px, 0)`;
-    }
-
-    return (
-      <Drag onDragMove={this.onDragMove} onDragEnd={this.onDragEnd}>
-        <div className={cls} style={style}>
-          <div
-            className={`${prefixCls}__content`}
-            style={contentStyle}
-            ref={(ele) => {
-              this.pull = ele;
-            }}
-          >
-            <div className={`${prefixCls}__refresh`}>{this.renderRefresh()}</div>
-            <div className={`${prefixCls}__body`}>{children}</div>
-            <div className={loadCls}>{this.renderLoad()}</div>
-          </div>
-        </div>
-      </Drag>
-    );
+    return <></>;
   }
 }

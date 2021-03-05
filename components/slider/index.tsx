@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import PropsType from './PropsType';
 
 import Events from '../utils/events';
-import Drag, { DragEvent, DragState } from '../drag';
 import Tooltip from '../tooltip';
 
 const getValue = (props: Slider['props'], defaultValue: number) => {
@@ -179,7 +178,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
     this.setState({ tooltip: true });
   };
 
-  handleDragMove = (event?: DragEvent, dragState?: DragState) => {
+  handleDragMove = (event?: DragEvent, dragState?: any) => {
     const { disabled, vertical } = this.props;
 
     if (disabled) {
@@ -219,7 +218,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
     return true;
   };
 
-  handleDragEnd = (_event?: DragEvent, dragState?: DragState) => {
+  handleDragEnd = (_event?: DragEvent, dragState?: any) => {
     const { vertical, onChange } = this.props;
     const { offsetX, offsetY } = dragState!;
 
@@ -312,9 +311,9 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
   };
 
   render() {
-    const { prefixCls, className, disabled, min, max, vertical, showMark } = this.props;
+    const { prefixCls, className, disabled, vertical, showMark } = this.props;
 
-    const { value, tooltip } = this.state;
+    const { value } = this.state;
 
     const offset = this.getOffsetPercent(value);
 
@@ -323,10 +322,6 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
       [`${prefixCls}--vertical`]: vertical,
       [`${prefixCls}--marked`]: showMark,
     });
-
-    const handleStyle = {
-      [vertical ? 'bottom' : 'left']: offset || 0,
-    };
 
     const lineBg = {
       [vertical ? 'height' : 'width']: offset || 0,
@@ -345,26 +340,6 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
 
             {this.renderMarkInfo()}
           </div>
-
-          <Drag
-            onDragStart={this.handleDragStart}
-            onDragMove={this.handleDragMove}
-            onDragEnd={this.handleDragEnd}
-          >
-            <div
-              className={`${prefixCls}__handle`}
-              role="slider"
-              aria-valuemin={min}
-              aria-valuemax={max}
-              aria-valuenow={value}
-              aria-orientation={vertical ? 'vertical' : 'horizontal'}
-              style={handleStyle}
-            >
-              <Tooltip trigger="manual" arrowPointAtCenter visible={tooltip} content={value}>
-                <div className={`${prefixCls}__handle__shadow`} />
-              </Tooltip>
-            </div>
-          </Drag>
         </div>
       </div>
     );

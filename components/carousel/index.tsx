@@ -2,7 +2,6 @@ import React, { Component, cloneElement, Children, CSSProperties } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import Events from '../utils/events';
-import Drag from '../drag';
 
 export interface CarouselProps extends PropsType {
   prefixCls?: string;
@@ -344,7 +343,6 @@ export default class Carousel extends Component<CarouselProps, any> {
 
   render() {
     const { prefixCls, className, height, style } = this.props;
-    const items = this.parseItems(this.props);
     const itemsStyle: CSSProperties = {};
 
     const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
@@ -354,28 +352,8 @@ export default class Carousel extends Component<CarouselProps, any> {
       itemsStyle.height = height;
     }
 
-    const content = (
-      <div
-        ref={(ele) => {
-          this.carouselItems = ele;
-        }}
-        className={`${prefixCls}__items`}
-        onTransitionEnd={this.transitionEnd}
-        style={itemsStyle}
-      >
-        {items}
-      </div>
-    );
-
     return (
       <div className={cls} style={style}>
-        <Drag
-          onDragStart={this.onDragStart}
-          onDragMove={this.onDragMove}
-          onDragEnd={this.onDragEnd}
-        >
-          {content}
-        </Drag>
         {this.renderPagination()}
       </div>
     );

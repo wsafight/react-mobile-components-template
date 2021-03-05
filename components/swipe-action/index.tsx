@@ -2,7 +2,6 @@ import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import Events from '../utils/events';
-import Drag from '../drag';
 
 export interface SwipeActionProps extends PropsType {
   prefixCls?: string;
@@ -204,14 +203,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
 
   render() {
     const { prefixCls, className, left, right, children } = this.props;
-    const { offsetLeft, animationDuration } = this.state;
     const cls = classnames(prefixCls, className);
-    const style = {
-      WebkitTransitionDuration: `${animationDuration}ms`,
-      transitionDuration: `${animationDuration}ms`,
-      WebkitTransform: `translate3d(${offsetLeft}px, 0, 0)`,
-      transform: `translate3d(${offsetLeft}px, 0, 0)`,
-    };
 
     return left || right ? (
       <div
@@ -222,15 +214,6 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
       >
         {this.renderButtons(left, 'left')}
         {this.renderButtons(right, 'right')}
-        <Drag
-          onDragStart={this.onDragStart}
-          onDragMove={this.onDragMove}
-          onDragEnd={this.onDragEnd}
-        >
-          <div className={`${prefixCls}__content`} style={style}>
-            {children}
-          </div>
-        </Drag>
       </div>
     ) : (
       children
