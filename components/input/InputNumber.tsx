@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import { InputNumberProps } from './PropsType';
 import Events from '../utils/events';
-import KeyboardPicker from '../keyboard-picker';
 import Icon from '../icon';
 import { getValue } from './utils';
 
@@ -190,14 +189,6 @@ export default class InputNumber extends Component<InputNumberProps, any> {
           {value}
         </div>
         <input type="hidden" value={value} disabled={disabled} />
-        <KeyboardPicker
-          ref={(ele) => {
-            this.picker = ele;
-          }}
-          visible={visible}
-          type={type}
-          onKeyClick={this.onKeyClick}
-        />
       </div>
     );
 

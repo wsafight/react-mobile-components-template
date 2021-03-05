@@ -8,7 +8,6 @@ import StackPicker from '../../stack-picker/locale/zh_CN';
 import Pull from '../../pull/locale/zh_CN';
 import SearchBar from '../../search-bar/locale/zh_CN';
 import Select from '../../select/locale/zh_CN';
-import Keyboard from '../../keyboard/locale/zh_CN';
 import ImagePreview from '../../image-preview/locale/zh_CN';
 
 export default {
@@ -23,6 +22,5 @@ export default {
   Pull,
   SearchBar,
   Select,
-  Keyboard,
   ImagePreview,
 };
