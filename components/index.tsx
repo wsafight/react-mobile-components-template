@@ -39,7 +39,6 @@ export { default as Carousel } from './carousel';
 export { default as SwipeAction } from './swipe-action';
 export { default as Switch } from './switch';
 export { default as Tabs } from './tabs';
-export { default as Toast } from './toast';
 export { default as Tooltip } from './tooltip';
 export { default as Trigger } from './trigger';
 export { default as Wheel } from './wheel';
