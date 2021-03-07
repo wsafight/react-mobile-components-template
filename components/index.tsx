@@ -25,3 +25,6 @@ export { default as TabBar } from './tab-bar';
 export { default as LocaleProvider } from './locale-provider';
 export { default as ConfigProvider } from './config-provider';
 export { default as ConfigReceiver } from './config-receiver';
+
+
+export { default as Tooltip } from './tooltip';

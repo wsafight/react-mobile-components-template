@@ -119,7 +119,7 @@
     "stylelint-config-za": "0.3.0",
     "stylelint-scss": "^3.18.0",
     "typescript": "4.0.2",
-    "zarm-web": "^0.0.1-alpha.12"
+    "zarm-web": "^0.0.1-alpha.4"
   },
   "browserslist": [
     "last 2 versions",
@@ -137,12 +137,6 @@
     "lib/**/style/*",
     "site/**/**.scss"
   ],
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
   "bundlesize": [
     {
       "path": "./dist/zarm.min.js",
