@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import BaseDateSelectProps from './PropsType';
 import formatFn from '../date-picker-view/utils/format';
-import DatePicker from '../date-picker';
 
 export interface DateSelectProps extends BaseDateSelectProps {
   prefixCls?: string;
@@ -72,18 +71,8 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
   };
 
   render() {
-    const {
-      prefixCls,
-      className,
-      placeholder,
-      disabled,
-      onChange,
-      locale,
-      value,
-      hasArrow,
-      ...others
-    } = this.props;
-    const { visible, selectValue } = this.state;
+    const { prefixCls, placeholder, disabled, locale, hasArrow } = this.props;
+    const { selectValue } = this.state;
 
     const cls = classnames(prefixCls, {
       [`${prefixCls}--placeholder`]: !selectValue,
@@ -99,14 +88,6 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
             {formatFn(this, selectValue) || placeholder || locale!.placeholder}
           </div>
         </div>
-        <DatePicker
-          {...others}
-          className={className}
-          visible={visible}
-          value={selectValue}
-          onOk={this.onOk}
-          onCancel={this.onCancel}
-        />
       </div>
     );
   }

@@ -1,6 +1,4 @@
-import BaseDatePickerProps from '../date-picker/PropsType';
-
-type datePickerPropsWithoutVisible = Omit<BaseDatePickerProps, 'visible'>;
+type datePickerPropsWithoutVisible = Omit<any, 'visible'>;
 
 export default interface BaseDateSelectProps extends datePickerPropsWithoutVisible {
   placeholder?: string;

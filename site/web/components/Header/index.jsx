@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { IntlProvider, FormattedMessage } from 'react-intl';
-import { Icon, Popup } from 'zarm';
-import { Dropdown, Menu } from 'zarm-web';
+import { Icon } from 'zarm';
 import classnames from 'classnames';
 import docsearch from 'docsearch.js';
 import MenuComponent from '@site/web/components/Menu';
@@ -29,10 +28,10 @@ const Header = ({ children }) => {
   const searchInput = useRef();
   const location = useLocation();
   const [menu, toggleMenu] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
   const [locale, setLocale] = useState(window.localStorage.locale || 'zhCN');
   const currentPageKey = location.pathname.split('/')[1] || '/';
 
+  const bb = () => setLocale('zhCN');
   const keyupEvent = (event) => {
     if (event.keyCode === 83 && event.target === document.body) {
       searchInput.current.focus();
@@ -71,37 +70,12 @@ const Header = ({ children }) => {
       {currentPageKey === 'components' && (
         <>
           <Icons type="list" onClick={() => toggleMenu(!menu)} />
-          <Popup visible={menu} direction="left" onMaskClick={() => toggleMenu(!menu)}>
-            <div className="header-menu">
-              {/* <div className="header-menu__close"><Icon type="close" /></div> */}
-              <MenuComponent />
-            </div>
-          </Popup>
+          <div className="header-menu">
+            {/* <div className="header-menu__close"><Icon type="close" /></div> */}
+            <MenuComponent />
+          </div>
         </>
       )}
-    </div>
-  );
-
-  const moreRender = (
-    <div className="header-icon header-icon-more">
-      <Dropdown
-        visible={dropdown}
-        onVisibleChange={setDropdown}
-        direction="bottom"
-        content={
-          <div className="header-nav">
-            <Menu selectedKeys={[currentPageKey]}>
-              {NAV_ITEMS.map((item) => (
-                <Menu.Item key={item.key}>
-                  <a href={item.link}>{item.title}</a>
-                </Menu.Item>
-              ))}
-            </Menu>
-          </div>
-        }
-      >
-        <Icons type="more" />
-      </Dropdown>
     </div>
   );
 
@@ -117,7 +91,6 @@ const Header = ({ children }) => {
                 <sup className="logo-version">v{version}</sup>
               </a>
             </div>
-            {moreRender}
             <nav>
               <div className="search">
                 <Icon type="search" />
