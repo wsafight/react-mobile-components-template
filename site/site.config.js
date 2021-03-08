@@ -24,7 +24,7 @@ module.exports = {
       {
         key: 'button',
         name: '按钮',
-        module: () => import('@/components/button/demo.md'),
+        module: () => import('@/components/button-new/demo.md'),
         style: true,
       },
     ],

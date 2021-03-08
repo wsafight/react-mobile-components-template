@@ -1,8 +1,6 @@
 export { default as Collapse } from './collapse';
 export { default as Button } from './button-new';
 export { default as Cell } from './cell';
-export { default as Checkbox } from './checkbox';
-// export { default as Confirm } from './confirm';
 export { default as DatePickerView } from './date-picker-view';
 export { default as DateSelect } from './date-select';
 export { default as FilePicker } from './file-picker';
@@ -14,7 +12,6 @@ export { default as Panel } from './panel';
 export { default as Popper } from './popper';
 export { default as Progress } from './progress';
 export { default as Pull } from './pull';
-export { default as Stepper } from './stepper';
 export { default as Carousel } from './carousel';
 export { default as SwipeAction } from './swipe-action';
 export { default as Switch } from './switch';
