@@ -1,4 +1,3 @@
-export { default as Collapse } from './collapse';
 export { default as Button } from './button';
 export { default as Cell } from './cell';
 export { default as DatePickerView } from './date-picker-view';
