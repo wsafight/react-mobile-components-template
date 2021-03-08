@@ -11,7 +11,6 @@ export { default as NoticeBar } from './notice-bar';
 export { default as Panel } from './panel';
 export { default as Popper } from './popper';
 export { default as Progress } from './progress';
-export { default as Carousel } from './carousel';
 export { default as SwipeAction } from './swipe-action';
 export { default as Switch } from './switch';
 export { default as Tabs } from './tabs';

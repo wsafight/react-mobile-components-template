@@ -2,7 +2,6 @@ import React, { PureComponent, CSSProperties, ReactElement } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import TabPanel, { TabPanelProps } from './TabPanel';
-import Carousel from '../carousel';
 import { getTransformPropValue, getPxStyle } from './util/index';
 import { scrollTo } from '../utils/dom';
 
@@ -30,7 +29,7 @@ const getSelectIndex = (children) => {
 export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   static Panel: typeof TabPanel;
 
-  private carousel?: Carousel;
+  private carousel?: any;
 
   private layout?: HTMLUListElement;
 
@@ -61,7 +60,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   }
 
   componentDidMount() {
-    const { children } = this.props;
+    const {children} = this.props;
     if (React.Children.count(children)) {
       this.calculateLineWidth();
       this.calculateScorllLeftLocation();
@@ -69,9 +68,9 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   }
 
   componentDidUpdate(prevstate) {
-    const { value: prevValue, children: prevChild } = prevstate;
-    const { value } = this.state;
-    const { children } = this.props;
+    const {value: prevValue, children: prevChild} = prevstate;
+    const {value} = this.state;
+    const {children} = this.props;
     if (prevValue !== value || prevChild !== children) {
       this.calculateLineWidth();
     }
@@ -79,13 +78,13 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   }
 
   get isVertical() {
-    const { direction } = this.props;
+    const {direction} = this.props;
     return direction === 'vertical';
   }
 
   get currentValue() {
-    const { value } = this.state;
-    const { children } = this.props;
+    const {value} = this.state;
+    const {children} = this.props;
     const count = React.Children.count(children);
     if (value < 0) {
       return 0;
@@ -100,20 +99,20 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     this.layout = ref;
   };
 
-  setCarouselRef = (ref: Carousel) => {
+  setCarouselRef = (ref: any) => {
     this.carousel = ref;
   };
 
   onTabChange = (value: number) => {
-    const { onChange } = this.props;
+    const {onChange} = this.props;
     if (!('value' in this.props)) {
-      this.setState({ value });
+      this.setState({value});
     }
     typeof onChange === 'function' && onChange(value);
   };
 
   onTabClick = (tab: ReactElement<TabPanel['props'], typeof TabPanel>, index: number) => {
-    const { disabled, swipeable } = this.props;
+    const {disabled, swipeable} = this.props;
     if (disabled || tab.props.disabled) {
       return;
     }
@@ -125,8 +124,8 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   };
 
   renderTabs = (tab: ReactElement<TabPanelProps, typeof TabPanel>, index: number) => {
-    const { prefixCls, disabled } = this.props;
-    const { value } = this.state;
+    const {prefixCls, disabled} = this.props;
+    const {value} = this.state;
 
     const itemCls = classnames(`${prefixCls}__tab`, tab.props.className, {
       [`${prefixCls}__tab--disabled`]: disabled || tab.props.disabled,
@@ -143,14 +142,14 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
    * @description: 计算 line 大小和位置
    */
   caclLineSizePos = () => {
-    const { itemWidth } = this.state;
+    const {itemWidth} = this.state;
     const value = this.currentValue;
-    const { children, scrollable } = this.props;
+    const {children, scrollable} = this.props;
     const ChildCount = React.Children.count(children);
     let pos = 100 * value;
     if (scrollable && this.layout) {
       const el = this.layout!.children[value];
-      const { offsetLeft = 0, offsetTop = 0 } = el as HTMLElement;
+      const {offsetLeft = 0, offsetTop = 0} = el as HTMLElement;
       pos = this.isVertical ? offsetTop : offsetLeft;
     }
 
@@ -159,7 +158,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
       ? getPxStyle(pos, 'px', this.isVertical)
       : getPxStyle(pos, '%', this.isVertical);
     const styleUl = getTransformPropValue(transformValue);
-    const itemSize = this.isVertical ? { height: `${size}` } : { width: `${size}` };
+    const itemSize = this.isVertical ? {height: `${size}`} : {width: `${size}`};
 
     return {
       ...styleUl,
@@ -171,7 +170,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
    * @description: 计算滚动条移动位置
    */
   calculateScorllLeftLocation = () => {
-    const { scrollable } = this.props;
+    const {scrollable} = this.props;
     if (!scrollable) {
       return false;
     }
@@ -179,13 +178,13 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     const index = value - 1 >= 0 ? value - 1 : 0;
     const prevTabItem = this.layout!.childNodes[index];
     if (scrollable && this.layout && prevTabItem) {
-      const { offsetTop: top = 0, offsetLeft: left = 0 } = prevTabItem as HTMLElement;
+      const {offsetTop: top = 0, offsetLeft: left = 0} = prevTabItem as HTMLElement;
       scrollTo(this.layout, top, left, 0.3);
     }
   };
 
   calculateLineWidth = () => {
-    const { scrollable } = this.props;
+    const {scrollable} = this.props;
     if (!scrollable) {
       return;
     }
@@ -215,7 +214,6 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
       lineWidth,
       swipeable,
       children,
-      disabled,
       scrollable,
       direction,
     } = this.props;
@@ -231,27 +229,14 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     let contentRender;
 
     if (swipeable) {
-      contentRender = (
-        <Carousel
-          swipeable={!disabled}
-          direction={direction === 'vertical' ? 'up' : 'left'}
-          showPagination={false}
-          activeIndex={value}
-          ref={this.setCarouselRef}
-          onChange={(v: number) => {
-            this.onTabChange(v);
-          }}
-        >
-          {React.Children.map(children, (item: any, index: number) => (
-            <div key={+index}>{item.props.children}</div>
-          ))}
-        </Carousel>
-      );
+      contentRender = React.Children.map(children, (item: any, index: number) => (
+        <div key={+index}>{item.props.children}</div>
+      ))
     } else {
       contentRender = React.Children.map(
         children,
         (item: ReactElement<TabPanel['props'], typeof TabPanel>, index) => {
-          return item.props.children && <TabPanel {...item.props} selected={value === index} />;
+          return item.props.children && <TabPanel {...item.props} selected={value === index}/>;
         },
       );
     }
@@ -262,7 +247,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     if (lineWidth) {
       lineStyle.backgroundColor = 'transparent';
       lineInnerRender = (
-        <span className={`${prefixCls}__line__inner`} style={{ width: lineWidth }} />
+        <span className={`${prefixCls}__line__inner`} style={{width: lineWidth}}/>
       );
     }
 
