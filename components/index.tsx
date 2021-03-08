@@ -2,7 +2,6 @@ export { default as Button } from './button';
 export { default as Cell } from './cell';
 export { default as Icon } from './icon';
 export { default as Input } from './input';
-export { default as NoticeBar } from './notice-bar';
 export { default as Panel } from './panel';
 export { default as Popper } from './popper';
 export { default as Progress } from './progress';
