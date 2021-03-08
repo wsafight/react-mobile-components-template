@@ -15,8 +15,6 @@ export { default as Carousel } from './carousel';
 export { default as SwipeAction } from './swipe-action';
 export { default as Switch } from './switch';
 export { default as Tabs } from './tabs';
-export { default as NavBar } from './nav-bar';
-export { default as Marquee } from './marquee';
 export { default as TabBar } from './tab-bar';
 export { default as LocaleProvider } from './locale-provider';
 export { default as ConfigProvider } from './config-provider';
