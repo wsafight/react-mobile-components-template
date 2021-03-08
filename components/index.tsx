@@ -3,7 +3,6 @@ export { default as Cell } from './cell';
 export { default as Icon } from './icon';
 export { default as Input } from './input';
 
-export { default as Progress } from './progress';
 export { default as SwipeAction } from './swipe-action';
 export { default as Switch } from './switch';
 export { default as Tabs } from './tabs';
