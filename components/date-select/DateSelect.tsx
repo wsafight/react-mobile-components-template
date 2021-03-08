@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import BaseDateSelectProps from './PropsType';
-import formatFn from '../date-picker-view/utils/format';
 
 export interface DateSelectProps extends BaseDateSelectProps {
   prefixCls?: string;
@@ -71,7 +70,7 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
   };
 
   render() {
-    const { prefixCls, placeholder, disabled, locale, hasArrow } = this.props;
+    const { prefixCls,  disabled, hasArrow } = this.props;
     const { selectValue } = this.state;
 
     const cls = classnames(prefixCls, {
@@ -82,12 +81,6 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
 
     return (
       <div className={cls} onClick={this.handleClick}>
-        <input type="hidden" value={formatFn(this, selectValue)} />
-        <div className={`${prefixCls}__input`}>
-          <div className={`${prefixCls}__value`}>
-            {formatFn(this, selectValue) || placeholder || locale!.placeholder}
-          </div>
-        </div>
       </div>
     );
   }
